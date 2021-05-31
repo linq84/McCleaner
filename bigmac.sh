@@ -66,7 +66,7 @@ echo "Done !"
 "1")  echo "Installing Visual Studio" | 
 sleep 1
 brew install --cask visual-studio-code
-dockutil --add /Visual\ Studio.app --no-restart
+dockutil --add /Visual\ Studio\ Code.app --no-restart
 sleep 1
 echo "Done !"
 
@@ -81,7 +81,7 @@ echo "Done !"
 "2")  echo "Installing Github" | 
 sleep 1
 brew install --cask github
-dockutil --add /Github\ Desktop.app --no-restart
+dockutil --add /GitHub\ Desktop.app --no-restart
 sleep 1
 echo "Done !"
 
@@ -94,7 +94,7 @@ echo "Done !"
 "3")  echo "Installing AWS Workspaces" | 
 sleep 1
 brew install --cask amazon-workspaces
-dockutil --add /Applications/Amazon\ Workspaces.app --no-restart
+dockutil --add /Applications/WorkSpaces.app --no-restart
 sleep 1
 echo "Done !"
 
