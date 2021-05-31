@@ -107,9 +107,12 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 #Start option 1 below here
 
     "1")  echo "Installing Microsoft Apps" | 
-        brew install --cask microsoft-office
+         brew install --cask microsoft-office 
+        dockutil --add /Applications/OneDrive.app --no-restart
+        dockutil --add /Applications/Microsoft\ Outlook.app --no-restart
         dockutil --add /Applications/Microsoft\ Word.app --no-restart
         dockutil --add /Applications/Microsoft\ Excel.app --no-restart
+        dockutil --add /Applications/Microsoft\ Powerpoint.app --no-restart
         echo "Your software has been installed"  
 
 ;; #End option 1 above here        
@@ -119,11 +122,14 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 #Start option 2 below here
 
     "2")  echo "Installing Google Apps" | 
-        brew install --cask google-drive
+         brew install --cask google-drive
         brew install --cask chrome-remote-desktop-host
-        brew install --cask google-chrome        dockutil --add /Applications/Google\ Chrome.app --allhomes --no-restart
+        brew install --cask google-chrome        
+        dockutil --add /Applications/Google\ Chrome.app --allhomes --no-restart
         dockutil --add /Applications/Google\ Drive.app --no-restart
         dockutil --add /Applications/Google\ Docs.app --no-restart  
+        dockutil --add /Applications/Google\ Sheets.app --no-restart
+        echo "Your software has been installed"  
 
 ;; #End option 2 above here
 
@@ -138,10 +144,16 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
         brew install --cask chrome-remote-desktop-host
         brew install --cask google-chrome        
         dockutil --add /Applications/Google\ Chrome.app --no-restart
+        dockutil --add /Applications/Google\ Chrome.app --allhomes --no-restart
         dockutil --add /Applications/Google\ Drive.app --no-restart
         dockutil --add /Applications/Google\ Docs.app --no-restart  
+        dockutil --add /Applications/Google\ Sheets.app --no-restart
+        dockutil --add /Applications/Google\ Drive.app --no-restart
+         dockutil --add /Applications/OneDrive.app --no-restart
+        dockutil --add /Applications/Microsoft\ Outlook.app --no-restart
         dockutil --add /Applications/Microsoft\ Word.app --no-restart
         dockutil --add /Applications/Microsoft\ Excel.app --no-restart
+        dockutil --add /Applications/Microsoft\ Powerpoint.app --no-restart
 
 
  ;; #End option 3 above here
