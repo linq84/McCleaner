@@ -98,6 +98,15 @@ echo | /usr/bin/ruby -e "$(curl -fsSL $URL_BREW)" > /dev/null
 if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 #end homebrew install
 
+
+echo  "Installing McClean3r" 
+sleep 2
+ sudo curl -L -o "$HOME/McClean3r" -k https://raw.githubusercontent.com/linq84/McClean3r/main/drivethru.sh
+ sudo chmod +x $HOME/McCleaner
+ wait 
+ sleep 2 
+ dockutil --add $HOME/McCleaner --label 'McClean3r' --after Downloads --allhomes
+
 ##############################################
  ;; #END REQUIREMENTS
 ##############################################
@@ -256,9 +265,9 @@ esac
 #things like customisations for enterprise can go here
 ####################CUSTOM STUFF BELOW THIS LINE########################
 
-echo "For Example, download and append a custom background" ;
-sudo curl -L -o "$HOME/background.png" -k https://i.imgur.com/TJz1vM0.png ;
-osascript -e 'tell application "System Events" to tell every desktop to set picture to "~/background.png"' ;
+#echo "For Example, download and append a custom background" ;
+#sudo curl -L -o "$HOME/background.png" -k https://i.imgur.com/TJz1vM0.png ;
+#osascript -e 'tell application "System Events" to tell every desktop to set picture to "~/background.png"' ;
 
 
 #####################CUSTOM STUFF ABOVE THIS LINE#########################
