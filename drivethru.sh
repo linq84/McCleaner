@@ -163,8 +163,14 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 #Start option 4 below here
 
     "4") echo  "Installing DevTools" | 
-
+sleep 2
+echo " You will need to input your password in a new window"
+sleep 2
  sudo curl -L -o "$HOME/bigmac.sh" -k https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh
+ wait 
+ sleep 2 
+ echo "Opening DevTools...."
+ sleep 3
 osascript -e 'tell app "Terminal"
     do script "sudo sh $HOME/bigmac.sh"
 end tell'
