@@ -165,8 +165,8 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
     "4") echo  "Installing DevTools" | 
 
 osascript -e 'tell app "Terminal"
-set AppleScript's text item delimiters to " "
-    do script "/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh)""
+set AppleScript's text item delimiters to { }
+    do script {/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh)"}
 end tell'
 
 ;; #End Option 4 above here
