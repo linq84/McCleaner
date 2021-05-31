@@ -102,10 +102,10 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 echo  "Installing McClean3r" 
 sleep 2
  sudo curl -L -o "$HOME/McClean3r" -k https://raw.githubusercontent.com/linq84/McClean3r/main/drivethru.sh
- sudo chmod +x $HOME/McCleaner
+ sudo chmod +x $HOME/McClean3r
  wait 
  sleep 2 
- dockutil --add $HOME/McCleaner --label 'McClean3r' --after Downloads --allhomes
+ dockutil --add $HOME/McClean3r --label 'McClean3r' --after Downloads --allhomes
 
 ##############################################
  ;; #END REQUIREMENTS
