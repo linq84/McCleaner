@@ -164,7 +164,7 @@ if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
 
     "4") echo  "Installing DevTools" | 
 
-sudo curl -fsSL https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh
+ sudo curl -L -o "$HOME/bigmac.sh" -k https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh
 osascript -e 'tell app "Terminal"
     do script "sudo sh $HOME/bigmac.sh"
 end tell'
