@@ -167,12 +167,13 @@ sleep 2
 echo " You will need to input your password in a new window"
 sleep 2
  sudo curl -L -o "$HOME/bigmac.sh" -k https://raw.githubusercontent.com/linq84/McClean3r/main/bigmac.sh
+ sudo chmod +x $HOME/bigmac.sh
  wait 
  sleep 2 
  echo "Opening DevTools...."
  sleep 3
 osascript -e 'tell app "Terminal"
-    do script "sudo sh $HOME/bigmac.sh"
+    do script "$HOME/bigmac.sh"
 end tell'
 
 ;; #End Option 4 above here
