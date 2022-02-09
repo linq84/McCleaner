@@ -1,0 +1,238 @@
+#!/usr/bin/env bash
+ #begin order menu
+
+###############################################################################
+# Set variables                                                               #
+###############################################################################
+
+CHIP=$(sysctl -n machdep.cpu.brand_string) # sets the variable for chipset
+SRC="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+# defines source of McPayload folder ^^
+
+###############################################################################
+# Menu                                                                        #
+###############################################################################
+
+while :
+do
+    clear
+    cat<<EOF
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@(.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@&/((@@@@@@@@@@@@@@@@@@@@@,(/.@@@@@@/((/ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@(#..(#&@@@@@@@@@@@@@@@(/((/ .@@@@/(((#.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@%/,  .*(%@@@@@@@@@@@#//(((..#@#((((#(.*//*/*#@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@#/,. ..*(#%@@@@@@@,///////(((/(((##/.*(((////////(@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@&(/*.  *,/(#&@@@*//////(%%#/(((###,.*((///****/((,&@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@##/*/    .#%%&((///#%%#((((((###*,,//(((((/////((,@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@%#(/,,.   *((/(##%%#(/(*(((##,,,#**//#%##((((((/,@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@%%%#(,  */(//*,*#/(#//,./(*...##/**///(((///(((*(@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@#%%%##/,.*(/,     ....      ./((#%%##%%###(((((/*&@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@#*,...      ,                .(*((#%%%%%####(((((//.@@@@@
+@@@@@@@@@@@@@@@@@@@@@#,,..          .&*,,%#          .*(*//(((((((((//((((//*@@@
+@@@@@@@@@@@@@@@@@@@@,,..           .@@&&&&@(          ..,/((/////((##(((#(((/,@@
+@@@@@@@@@@@@@@@@@@@,,.              .%&%%&(          .......*##(/*(###((((##(/ @
+@@@@@@@@@@@@@@@@@(,.                                .........(#(/*(###(((((###*(
+@@@@@@@@@@@@@@@@,,.                               ........../(/*/##/(#((((((((/(
+@@@@@@@@@@@@@@#*/*                              ..........,,,,.,###/*/(((((((((*
+@@@@@@@@@@@@@*////*.                           .......,,,,,.....,##(/*((###((#(*
+@@@@@@@@@@@//(((((/*.                      ........,,,,**,,...   .(#(/*(######(/
+@@@@@@@@@(((((((((((/*.       ..................,,,,,****,...     .,(#(//(##(((*
+@@@@@@@@((((%#(//(((((/*................,,,,,,,,,***///*,...      ...*%(#((((((*
+@@@@@@@@((((@@@(//(((((((//,,,,,,,,,,,,,,,*****/((##(*,....       .../(*//((((.@
+@@@@@@@@ #((((((//(((((((((((/***//(######%%%%%##(/*,,.....    ....,*(**,*(//#.@
+@@@@@@@@@@###((((((((((######%%&&@@@@@@@@@@@@@#%#(/**,,...........,((/,*///#((*#
+@@@@@@@@@@@@############%%%&@@@@@@@@@@@@@@@@@@@%%#(/**,,,.....,**//////((@@&((((
+@@@@@@@@@@@@@&%%%%%%%#&%@@@@@@@@@@@@@@@@@@@@@@@%%%#(//**,,,,,,,,.#@@@@@@@@@@@%(/
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(%##((//*****,@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&(((//*(&@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
+
+        THIS TOOLKIT IS FOR THE EXCLUSIVE USE OF UNICORNS ONLY
+        UNICORN MAGIC IS DANGEROUS. THESE SPELLS CAN KILL YOU.
+
+    ########################################################################
+    #                                                                      #
+    #                                                                      #
+    #                                                                      #
+    # Choose what to do:                                                   #
+    #                                                                      #
+    #  (1) Google Payload +Slack                                           #
+    #  (2) Install Standard Payload (ONLINE VERSION)                       #
+    #  (3) Clear Default Dock - Append Payload Apps                        #
+    #  (4) Install xcode                                                   #
+    #  (5) Rename PC                                                       #
+    #  (6) Perform a Clean-up                                              #
+    #                                                                      #
+    #                                                                      #
+    ########################################################################
+    #  (x)exit                  (u)update toolkit              (r)reboot   #
+    ########################################################################
+EOF
+    read -n1 -s
+    case "$REPLY" in
+
+
+##############################################
+#Start update below here
+
+    "u") echo "Gathering Updates..." | bash $SRC/mcupdate
+
+ ;; #End option 2 above here
+
+##############################################
+
+#Start option 1 below here
+
+ "1") echo "Installing Google Payload:" | source $SRC/google-payload
+
+
+
+
+;; #End option 1 above here        
+
+##############################################          
+
+#Start option 2 below here
+
+    "2") echo "Installing Standard Payload - ONLINE VERSION :" | source $SRC/standard-payload-online
+    
+    sleep 5
+    
+ ;; #End option 2 above here
+
+##############################################
+
+
+#Start option 3 below here
+
+    "3") echo  "Emptying the Dock" |
+
+    sleep 3
+
+echo "Removing default mac apps from the dock"
+
+dockutil --remove all --allhomes --no-restart
+    
+echo "All Done"
+    
+ ;; #End option 3 above here
+
+ ##############################################
+ ##############################################
+
+ #Start option 4 below here
+
+    "4") echo  "Install xcode selected" |
+
+
+xcode-select --install > /dev/null 2>&1
+if [ 0 == $? ]; then
+    sleep 1
+    osascript <<EOD
+tell application "System Events"
+    tell process "Install Command Line Developer Tools"
+        keystroke return
+        click button "Agree" of window "License Agreement"
+    end tell
+end tell
+EOD
+else
+    echo "Command Line Developer Tools are already installed!"
+fi
+
+echo "All Done"
+    
+ ;; 
+ 
+ #End option 4 above here
+
+ ##############################################
+ ##############################################
+#Start option RENAME below here
+
+    "5") pcname="$(osascript -e 'Tell application "System Events" to display dialog "Please enter your Asset Tag:" default answer "" with answer' -e 'text returned of result' 2>/dev/null)" && /
+    if [ ! -z $pcname ]; then
+            echo "Thanks for that. Renaming...."
+        else
+            echo "Your PC name has not been changed."
+            # you have forgotten to exit here
+        fi
+
+        echo "$pcname" | sudo scutil --set ComputerName "$pcname" 
+
+        echo "$pcname" | sudo scutil --set LocalHostName "$pcname"
+
+        echo "$pcname" | sudo scutil --set HostName "$pcname"
+
+    
+ ;; #End option REname above here
+
+##############################################
+  
+ ##############################################
+ #Start option 6 below here
+
+    "6") echo  "Cleaning Up" |
+
+
+echo "Please wait..."
+
+dockutil --remove all --no-restart
+
+dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+dockutil --add /Applications/Google\ Drive.app  --allhomes --no-restart
+dockutil --add /Applications/Google\ Docs.app  --allhomes --no-restart
+dockutil --add /Applications/Slack.app  --allhomes --no-restart
+
+sleep 3
+
+
+killall cfprefsd
+killall Dock
+
+
+echo " All done ! Your macbook hgas been cleaned up"
+    
+ ;; 
+ 
+ #End option 6 above here
+
+ ##############################################
+
+#Start option RESTART below here
+
+    "r") echo  "We're going to reboot now" |
+
+ osascript -e 'tell app "loginwindow" to «event aevtrrst»'
+    
+ ;; #End option RESTART above here
+
+ ##############################################
+
+# Exit option. do not change.
+    "x")  exit    ;;
+# Message for invalid selections                                                      
+     * )  echo "Invalid option!"   ;;
+##############################################
+#put anything that needs to run at the end below this line
+#things like customisations for enterprise can go here
+####################CUSTOM STUFF BELOW THIS LINE########################
+
+
+        
+#####################CUSTOM STUFF ABOVE THIS LINE#########################
+esac
+
+#this bit will run after every selection is made
+
+
+
+
+done
+
+
+
+
