@@ -133,3 +133,10 @@ Assuming this in being run from a UNICORN usb anyway. We will cover the install 
     (u)usb install - will perform standard install from USB files                  
     (r)reboot - reboots pc
     (x)exit  -  exits application
+# McCleaner
+
+Creating a Simple little 'cleaner' to setup your macbook in a flash.
+#
+Simply run this command in terminal :
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/linq84/McCleaner/main/start.sh)"
