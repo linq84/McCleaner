@@ -1,4 +1,4 @@
-# McClean3r
+# McCleaner
 
 Creating a Simple little 'cleaner' to setup your macbook in a flash.
 #
