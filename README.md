@@ -20,13 +20,6 @@
   <p align="center">
     Welcome to McCleaner, use this toolkit to perform new Macbook setups or refresh models for new users !
     <br />
-    <a href="https://github.com/VGW/uni-McCleaner/"><strong>Explore the Git Repo »</strong></a>
-    <br />
-    <br />
-    ·
-    <a href="https://github.com/VGW/uni-McCleaner/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/VGW/uni-McCleaner/issues">Request Feature</a>
   </p>
 </p>
 
@@ -73,64 +66,42 @@ This toolkit has been built and depends on various bit of software.
 
 In the 'buildscript' you will find multiple options. 
 
-Two of the key options are 
+The key options are 
 
-(1) Standard Payload - this is a requirement to use the other install methods in the list.
+(1) Standard Payload - this version will download the apps from source and install them
 
-(u) Usb Install - this will not install the requirements for other isntall options.
+(2) Homebrew install - the version will install via homebrew
 
 
 These both will essentially install the same payload however, with different methods. 
 
-If (1) is selected, xcode, homebrew and dockutil will be installed. This will require interaction for the first few steps then homebrew takes care of the rest.
+If (2) is selected, xcode, homebrew and dockutil will be installed. This will require interaction for the first few steps then homebrew takes care of the rest.
 
-If (u) is selected the files on your 'UNICORN' usb will be used to perform the install. This method is faster but depends on the latest repo to be on USB
+If (1) is selected the files will be downloaded to a folder called Apps and it will be used to perform the install. This is a good option to
+        make McCleaner usbs
+
 
 
 ### Installation
 
-Assuming this in being run from a UNICORN usb anyway. We will cover the install from both options
+Assuming this in being run from a McCleaner usb anyway. We will cover the install from both options
 
-1. Open your #McCleaner file located on your UNICORN usb
+1. Open your McCleaner USB on your Mac
 
 2. Double click #buildscript.sh to run the script
   
 3. You will be greeted by the terminal menu 
 
-  	########################################################################
-    #                                                                      #
-    #                                                                      #
-    #                                                                      #
-    # Choose what to do:                                                   #
-    #                                                                      #
-    #  (1) Install Standard Payload (ONLINE VERSION)                       #
-    #  (2) Install Google Workspace Apps                                   #
-    #  (3) Install Microsoft Apps                                          #
-    #  (4) Install DevTool                                                 #
-    #  (5) Empty Dock - Clears Everything From Dock                        #
-    #  (6) Clear Default Dock - Append Payload Apps                        #
-    #  (7) Install xcode                                                   #
-    #  (n) Rename PC                                                       #
-    #                                                                      #
-    #                                                                      #
-    ########################################################################
-    #  (x)exit                 (u)usb install                  (r)reboot   #
-    ########################################################################
+  	<img width="553" alt="image" src="https://user-images.githubusercontent.com/13390505/167660281-d6cdf7d3-bc2d-465c-be21-00e1c01d4ce3.png">
 
+    
 
 
 4. Enter your install option 
 
-    (1) Install Standard Payload - Install xcode, dockutil, homebrew, Homebrew installs Gapps, Webex, OpenVPN, Slack                    
-    (2) Install Google Workspace Apps - re/Installs Gapps , requires (1)                               
-    (3) Install Microsoft Apps - Installs MS Office , requires (1)                                        
-    (4) Install DevTool - installs devtools (Visual Studio, Github, ChromeDevTools, MullvadVPN)                                               
-    (5) Empty Dock - Clears Everything From Dock                       
-    (6) Clear Default Dock - Append Payload Apps and remove default apps                       
-    (7) Install xcode - incase of failure on first run                                             
-    (n) Rename PC - Handy to rename Assets after install
+   
 
-    (u)usb install - will perform standard install from USB files                  
+    (u)update - will perform standard update to the working directory                  
     (r)reboot - reboots pc
     (x)exit  -  exits application
 # McCleaner
