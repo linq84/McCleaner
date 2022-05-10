@@ -1,0 +1,75 @@
+
+#!/usr/bin/env bash
+
+###############################################################################
+# standard payload - ONLINE VERSION - requires xcode to install               #
+###############################################################################
+
+CHIP=$(sysctl -n machdep.cpu.brand_string) # sets the variable for chipset
+SRC="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+# defines source of McCleaner folder ^^
+
+echo "We're going to install some required software first (xcode,brew,dockutil)"
+sleep 1
+# DocKUtil - Used to edit dock through cli, required.
+    echo "We need permission to install things"
+
+ sudo curl -L -o "$HOME/dockutil.pkg" -k https://github.com/kcrawford/dockutil/releases/download/2.0.5/dockutil-2.0.5.pkg ;
+ sleep 1
+ echo " Installing Dockutil "
+
+    sudo installer -pkg $HOME/dockutil.pkg -target "/" ;
+sleep 1
+    echo "DockUtil Installed"
+
+
+# install xcode
+
+echo "xcode install will say it failed, it didnt, unless it did"
+
+ xcode-select --install > /dev/null 2>&1
+if [ 0 == $? ]; then
+    sleep 1
+    osascript <<EOD
+tell application "System Events"
+    tell process "Install Command Line Developer Tools"
+        keystroke return
+        click button "Agree" of window "License Agreement"
+    end tell
+end tell
+EOD
+else
+    echo "Command Line Developer Tools are already installed!"
+fi
+
+# install homebrew
+
+URL_BREW='https://raw.githubusercontent.com/Homebrew/install/master/install'
+
+echo -n '- Installing brew ... '
+echo | /usr/bin/ruby -e "$(curl -fsSL $URL_BREW)" > /dev/null
+if [ $? -eq 0 ]; then echo 'OK'; else echo 'NG'; fi
+
+
+wait
+
+
+#end homebrew install
+brew install --cask google-drive
+brew install --cask chrome-remote-desktop-host
+brew install --cask google-chrome
+brew install --cask slack
+brew install --cask chrome-devtools      
+
+dockutil --remove all --allhomes --no-restart
+        dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+        dockutil --add /Applications/Google\ Drive.app --allhomes --no-restart
+        dockutil --add /Applications/Google\ Docs.app --allhomes --no-restart 
+        dockutil --add /Applications/Slack.app --no-resart
+        dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+
+        dockutil --add /Applications/Utilities/Terminal.app  --allhomes --no-restart
+
+
+        echo "Your software has been installed"  
+ exit

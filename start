@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
- #begin order menu
+#begin order menu
+
 
 ###############################################################################
 # Set variables                                                               #
@@ -17,54 +18,20 @@ while :
 do
     clear
     cat<<EOF
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@(.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@&/((@@@@@@@@@@@@@@@@@@@@@,(/.@@@@@@/((/ @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@(#..(#&@@@@@@@@@@@@@@@(/((/ .@@@@/(((#.@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@%/,  .*(%@@@@@@@@@@@#//(((..#@#((((#(.*//*/*#@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@#/,. ..*(#%@@@@@@@,///////(((/(((##/.*(((////////(@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@&(/*.  *,/(#&@@@*//////(%%#/(((###,.*((///****/((,&@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@##/*/    .#%%&((///#%%#((((((###*,,//(((((/////((,@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@%#(/,,.   *((/(##%%#(/(*(((##,,,#**//#%##((((((/,@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@%%%#(,  */(//*,*#/(#//,./(*...##/**///(((///(((*(@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@#%%%##/,.*(/,     ....      ./((#%%##%%###(((((/*&@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@#*,...      ,                .(*((#%%%%%####(((((//.@@@@@
-@@@@@@@@@@@@@@@@@@@@@#,,..          .&*,,%#          .*(*//(((((((((//((((//*@@@
-@@@@@@@@@@@@@@@@@@@@,,..           .@@&&&&@(          ..,/((/////((##(((#(((/,@@
-@@@@@@@@@@@@@@@@@@@,,.              .%&%%&(          .......*##(/*(###((((##(/ @
-@@@@@@@@@@@@@@@@@(,.                                .........(#(/*(###(((((###*(
-@@@@@@@@@@@@@@@@,,.                               ........../(/*/##/(#((((((((/(
-@@@@@@@@@@@@@@#*/*                              ..........,,,,.,###/*/(((((((((*
-@@@@@@@@@@@@@*////*.                           .......,,,,,.....,##(/*((###((#(*
-@@@@@@@@@@@//(((((/*.                      ........,,,,**,,...   .(#(/*(######(/
-@@@@@@@@@(((((((((((/*.       ..................,,,,,****,...     .,(#(//(##(((*
-@@@@@@@@((((%#(//(((((/*................,,,,,,,,,***///*,...      ...*%(#((((((*
-@@@@@@@@((((@@@(//(((((((//,,,,,,,,,,,,,,,*****/((##(*,....       .../(*//((((.@
-@@@@@@@@ #((((((//(((((((((((/***//(######%%%%%##(/*,,.....    ....,*(**,*(//#.@
-@@@@@@@@@@###((((((((((######%%&&@@@@@@@@@@@@@#%#(/**,,...........,((/,*///#((*#
-@@@@@@@@@@@@############%%%&@@@@@@@@@@@@@@@@@@@%%#(/**,,,.....,**//////((@@&((((
-@@@@@@@@@@@@@&%%%%%%%#&%@@@@@@@@@@@@@@@@@@@@@@@%%%#(//**,,,,,,,,.#@@@@@@@@@@@%(/
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@(%##((//*****,@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&(((//*(&@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ 
 
-        THIS TOOLKIT IS FOR THE EXCLUSIVE USE OF UNICORNS ONLY
-        UNICORN MAGIC IS DANGEROUS. THESE SPELLS CAN KILL YOU.
+
 
     ########################################################################
     #                                                                      #
-    #                                                                      #
+    #               THIS TOOLKIT SHOULD BE USED CAREFULLY                  #
     #                                                                      #
     # Choose what to do:                                                   #
     #                                                                      #
-    #  (1) Google Payload +Slack                                           #
-    #  (2) Install Standard Payload (ONLINE VERSION)                       #
+    #  (1) Install Local Downloaded Payload                                #
+    #  (2) Install Homebrew Payload                                        #
     #  (3) Clear Default Dock - Append Payload Apps                        #
     #  (4) Install xcode                                                   #
     #  (5) Rename PC                                                       #
-    #  (6) Perform a Clean-up                                              #
     #                                                                      #
     #                                                                      #
     ########################################################################
@@ -86,7 +53,7 @@ EOF
 
 #Start option 1 below here
 
- "1") echo "Installing Google Payload:" | source $SRC/google-payload
+ "1") echo "Installing Standard Payload:" | source $SRC/standard-payload
 
 
 
@@ -115,7 +82,10 @@ EOF
 echo "Removing default mac apps from the dock"
 
 dockutil --remove all --allhomes --no-restart
-    
+        dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+        dockutil --add /Applications/Google\ Drive.app --allhomes --no-restart
+        dockutil --add /Applications/Google\ Docs.app --allhomes --no-restart 
+        dockutil --add /Applications/Slack.app --no-resart
 echo "All Done"
     
  ;; #End option 3 above here
@@ -172,33 +142,7 @@ echo "All Done"
 
 ##############################################
   
- ##############################################
- #Start option 6 below here
 
-    "6") echo  "Cleaning Up" |
-
-
-echo "Please wait..."
-
-dockutil --remove all --no-restart
-
-dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
-dockutil --add /Applications/Google\ Drive.app  --allhomes --no-restart
-dockutil --add /Applications/Google\ Docs.app  --allhomes --no-restart
-dockutil --add /Applications/Slack.app  --allhomes --no-restart
-
-sleep 3
-
-
-killall cfprefsd
-killall Dock
-
-
-echo " All done ! Your macbook hgas been cleaned up"
-    
- ;; 
- 
- #End option 6 above here
 
  ##############################################
 
@@ -220,9 +164,42 @@ echo " All done ! Your macbook hgas been cleaned up"
 #put anything that needs to run at the end below this line
 #things like customisations for enterprise can go here
 ####################CUSTOM STUFF BELOW THIS LINE########################
+ ##############################################
+ #Start option 6 below here
+
+ #   "6") echo  "Cleaning Up" |
 
 
-        
+#echo "Please wait..."
+
+#cp $SRC/IMG/Custom_Wallpaper.png ~/
+#dockutil --remove all --no-restart
+
+#dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+#dockutil --add /Applications/Google\ Drive.app  --allhomes --no-restart
+#dockutil --add /Applications/Google\ Docs.app  --allhomes --no-restart
+#dockutil --add /Applications/Slack.app  --allhomes --no-restart
+
+#sleep 3
+
+#osascript -e 'tell application "System Events" to tell every desktop to set picture to "~/Custom_Wallpaper.png"'
+
+#killall cfprefsd
+#killall Dock
+
+#Get the wireless port ID
+#WirelessPort=$(networksetup -listallhardwareports | awk '/Wi-Fi|AirPort/{getline; print $NF}')
+
+#Run a SSID removal if its present
+#networksetup -removepreferredwirelessnetwork $WirelessPort YOURSSIDHERE 2>/dev/null
+
+#echo " All done ! Your macbook hgas been cleaned up"
+    
+ #;; 
+ 
+ #End option 6 above here
+
+##########################################################################       
 #####################CUSTOM STUFF ABOVE THIS LINE#########################
 esac
 

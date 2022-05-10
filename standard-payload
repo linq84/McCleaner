@@ -1,0 +1,140 @@
+#!/usr/bin/env bash
+
+###############################################################################
+# standard payload 
+###############################################################################
+
+CHIP=$(sysctl -n machdep.cpu.brand_string) # sets the variable for chipset
+SRC="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+# defines source of McCleaner folder ^^
+APPS=$SRC/apps
+
+echo "."".""."
+
+sleep 2 
+# checking if the app folder exists
+if [ ! -d $APPS ]; then
+sleep 2
+echo "This tool hasn't been run yet or is out of date"
+sleep 2
+   echo "Gathering Updates..." 
+    sleep 2 | bash $SRC/mcupdate ;
+fi;
+
+
+echo "McCleaner loading""."".""."
+sleep 2
+
+
+
+
+for f in "$APPS/dockutil.pkg" ; 
+    do sudo installer -verbose -pkg "$f" -target / ;
+    done 
+    echo "Dock Utlitiy Installed"
+
+    sleep 3
+
+echo "detecting chipset"
+sleep 1
+echo "."
+sleep 1
+echo ".."
+sleep 1 
+echo "..."
+
+    if [ "$CHIP" = "Apple M1" ] ; then
+    echo "Apple M1 Chipset Detected"
+    sleep 2
+    echo "Installing M1 Applications"
+     ## BEGIN M1 INSTALL ##
+
+    sleep 3
+
+echo " Installing Google Stuff"
+ sleep 3
+
+echo "Installing Google Chrome"
+hdiutil mount "$APPS/googlechrome.dmg" ;
+sudo cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ ;
+hdiutil unmount /Volumes/Google\ Chrome
+
+echo "Installing Google Drive"
+hdiutil mount "$APPS/GoogleDrive.dmg" ;
+sudo installer -pkg /Volumes/Install\ Google\ Drive/GoogleDrive.pkg -target / ; 
+hdiutil unmount /Volumes/Install\ Google\ Drive/ ;
+
+echo "Google Stuff Installed"
+
+sleep 3
+
+echo "installing slack"
+hdiutil mount "$APPS/slack.dmg" 
+sudo cp -r /Volumes/Slack/Slack.app /Applications/
+wait 5
+hdiutil unmount /Volumes/Slack.app
+
+echo "Slack Installed"
+
+echo "M1 Applications Installed"
+
+sleep 3
+
+
+
+
+else
+
+   ## BEGIN INTEL INSTALL ##
+
+echo "Intel Chipset Detected"
+echo "Installing Intel Apps"
+
+sleep 3
+
+echo " Installing Google Stuff"
+ sleep 3
+
+echo "Installing Google Chrome"
+hdiutil mount "$APPS/googlechrome.dmg" ;
+sudo cp -r /Volumes/Google\ Chrome/Google\ Chrome.app /Applications/ ;
+hdiutil unmount /Volumes/Google\ Chrome
+
+echo "Installing Google Drive"
+hdiutil mount "$APPS/GoogleDrive.dmg" ;
+sudo installer -pkg /Volumes/Install\ Google\ Drive/GoogleDrive.pkg -target / ; 
+hdiutil unmount /Volumes/Install\ Google\ Drive/ ;
+
+sleep 2 
+echo "Google Stuff Installed"
+
+sleep 3
+
+echo "installing slack"
+hdiutil mount "$APPS/slack.dmg"
+sudo cp -r /Volumes/Slack/Slack.app /Applications/
+hdiutil unmount /Volumes/Slack.app
+echo "Slack Installed"
+sleep 3
+    echo "Intel Applications installed!"
+fi
+
+echo "Please wait while we clean up..."
+
+dockutil --remove all --no-restart
+
+dockutil --add /Applications/Google\ Chrome.app  --allhomes --no-restart
+dockutil --add /Applications/Google\ Drive.app  --allhomes --no-restart
+dockutil --add /Applications/Google\ Docs.app  --allhomes --no-restart
+dockutil --add /Applications/Slack.app  --allhomes --no-restart
+
+
+echo "you're squeeky clean !"
+
+killall cfprefsd
+killall Dock
+
+echo " All done ! Mischief Managed"
+
+exit
+ 

@@ -6,9 +6,9 @@
 
 CHIP=$(sysctl -n machdep.cpu.brand_string) # sets the variable for chipset
 SRC="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-# defines source of McPayload folder ^^
-# defines Unicorn USB
-USB=/Volumes/UNICORN/McPayload
+# defines source of McCleaner folder ^^
+# defines McCleaner USB , if you name a blank USB it will write to it
+USB=/Volumes/McCleaner
 PKG=$USB/PKG
 DMG=$USB/DMG
 
@@ -17,9 +17,9 @@ USB_APPS=$USB/apps
 
 #########################################
 ## DOWNLOAD LIST TO USB ##############
-if [[ $(mount | awk '$3 == "/Volumes/UNICORN" {print $3}') != "" ]]; then
+if [[ $(mount | awk '$3 == "/Volumes/McCleaner" {print $3}') != "" ]]; then
 
-echo "Unicorn USB is mounted, updating"
+echo "McCleaner USB is mounted, updating"
 sleep 2
 sudo mkdir $USB/apps
 echo "."
@@ -34,7 +34,7 @@ cp $SRC/mcupdate $USB
 cp $SRC/standard-payload $USB
 cp $SRC/standard-payload $USB
 
-echo "Unicorn USB is mounted, cleaning up old PKG files"
+echo "McCleaner USB is mounted, cleaning up old PKG files"
 sleep 2
 echo "."
 sleep 2
@@ -60,7 +60,9 @@ sleep 2
 
 echo "Downloading: Dockutil to $USB_APPS"
  sudo curl -L -o "$USB_APPS/dockutil.pkg" -k https://github.com/kcrawford/dockutil/releases/download/2.0.5/dockutil-2.0.5.pkg ;
-
+echo "Thanks to @kcrawford for the awesome little tool here"
+ 
+ sleep 1
 echo "Downloading: Google Drive to $USB_APPS"
  sudo curl -L -o "$USB_APPS/GoogleDrive.dmg" -k https://dl.google.com/drive-file-stream/GoogleDrive.dmg
  
@@ -70,10 +72,14 @@ echo "Downloading: Google Drive to $USB_APPS"
   echo "Downloading: Slack to $USB_APPS"
  sudo curl -L -o "$USB_APPS/slack.dmg" -k https://slack.com/ssb/download-osx-universal
 
- echo "Downloading: Webex to $SRC"
- sudo curl -L -o "$USB_APPS/Webex.dmg" -k https://binaries.webex.com/WebexTeamsDesktop-MACOS-Gold/Webex.dmg
- sudo curl -L -o "$USB_APPS/WebexM1.dmg" -k https://binaries.webex.com/WebexDesktop-MACOS-Apple-Silicon-Gold/Webex.dmg
-
+ echo "Downloading: Github to $SRC"
+ if [ "$CHIP" = "Apple M1" ] ; then
+#Apple M1 source below here
+ sudo curl -L -o "$USB_APPS/VScode.zip" -k https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64
+ #Intel source below here
+ else
+ sudo curl -L -o "$USB_APPS/VScode.dmg" -k https://central.github.com/deployments/desktop/desktop/latest/darwin
+fi
 
 
 else 
@@ -97,8 +103,12 @@ echo "Downloading: Google Drive to $SRC"
   echo "Downloading: Slack to $SRC"
  sudo curl -L -o "$APPS/slack.dmg" -k https://slack.com/ssb/download-osx-universal
 
- echo "Downloading: Webex to $SRC"
- sudo curl -L -o "$APPS/Webex.dmg" -k https://binaries.webex.com/WebexTeamsDesktop-MACOS-Gold/Webex.dmg
- sudo curl -L -o "$APPS/WebexM1.dmg" -k https://binaries.webex.com/WebexDesktop-MACOS-Apple-Silicon-Gold/Webex.dmg
-
+  echo "Downloading: Github to $SRC"
+ if [ "$CHIP" = "Apple M1" ] ; then
+#Apple M1 source below here
+ sudo curl -L -o "$USB_APPS/VScode.zip" -k https://central.github.com/deployments/desktop/desktop/latest/darwin-arm64
+ #Intel source below here
+ else
+ sudo curl -L -o "$USB_APPS/VScode.dmg" -k https://central.github.com/deployments/desktop/desktop/latest/darwin
+fi
 fi
